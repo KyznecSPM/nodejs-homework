@@ -1,4 +1,4 @@
-const process = require('process');
+import process from 'process';
 
 const task1 = () => {
   process.stdin.on('data', (data) => {

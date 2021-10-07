@@ -1,11 +1,12 @@
-const csv = require('csvtojson');
-const fs = require('fs');
-const path = require('path');
+import csv from 'csvtojson';
+import fs from 'fs';
+import path from 'path';
 
-const INPUT_FILE_PATH = 'csv/file.csv';
-const OUTPUT_FILE_PATH = 'output/file.txt';
+const INPUT_FILE_PATH = '../../csv/file.csv';
+const OUTPUT_FILE_PATH = '../../output/file.txt';
 
 const OnError = (error) => console.error(error);
+
 const clearFile = () => {
   try {
     fs.writeFile(
@@ -14,7 +15,9 @@ const clearFile = () => {
       'utf8',
       (error) => error && console.error(error)
     );
-  } catch (error) {}
+  } catch (error) {
+    OnError(error);
+  }
 };
 
 const task2 = () => {
