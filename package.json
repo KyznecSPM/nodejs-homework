@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Node.js training project",
   "scripts": {
-    "task1": "nodemon task1/index.js",
-    "task2": "nodemon task2/index.js"
+    "build": "babel src/** -d dist",
+    "task1": "nodemon dist/task1/index.js",
+    "task2": "nodemon dist/task2/index.js",
+    "clean": "rm -rf node_modules dist",
+    "reinstall": "npm run clean && npm install",
+    "rebuild": "npm run clean && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,9 @@
   },
   "homepage": "https://github.com/KyznecSPM/nodejs-homework#readme",
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
