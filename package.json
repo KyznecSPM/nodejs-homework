@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-homework",
+  "version": "1.0.0",
+  "description": "Node.js training project",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KyznecSPM/nodejs-homework.git"
+  },
+  "keywords": [
+    "nodejs",
+    "javascript"
+  ],
+  "author": "Emelianov D.O.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KyznecSPM/nodejs-homework/issues"
+  },
+  "homepage": "https://github.com/KyznecSPM/nodejs-homework#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "prettier": "^2.4.1"
+  }
+}
