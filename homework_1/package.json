@@ -1,7 +1,6 @@
 {
-  "name": "nodejs-homework",
+  "name": "homework_1",
   "version": "1.0.0",
-  "description": "Node.js training project",
   "scripts": {
     "build": "babel src/** -d dist",
     "task1": "nodemon dist/task1/index.js",
@@ -10,20 +9,6 @@
     "reinstall": "npm run clean && npm install",
     "rebuild": "npm run clean && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KyznecSPM/nodejs-homework.git"
-  },
-  "keywords": [
-    "nodejs",
-    "javascript"
-  ],
-  "author": "Emelianov D.O.",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KyznecSPM/nodejs-homework/issues"
-  },
-  "homepage": "https://github.com/KyznecSPM/nodejs-homework#readme",
   "devDependencies": {
     "@babel/cli": "^7.15.7",
     "@babel/core": "^7.15.8",

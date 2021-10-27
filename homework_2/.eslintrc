@@ -1,6 +1,5 @@
 {
   "parser": "@babel/eslint-parser",
-  "plugins": [],
   "env": {
     "browser": true,
     "node": true,
@@ -29,7 +28,16 @@
     },
     "requireConfigFile": false
   },
+  "extends": ["standard", "prettier"],
+  "plugins": ["prettier"],
   "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "endOfLine": "auto"
+      }
+    ],
     "no-debugger": 1,
     "comma-dangle": [2, "never"],
     "no-cond-assign": [2, "always"],
@@ -170,13 +178,6 @@
         "allowArrowFunctions": true
       }
     ],
-    "indent": [
-      2,
-      4,
-      {
-        "SwitchCase": 1
-      }
-    ],
     "linebreak-style": 0,
     "max-len": [
       2,
@@ -184,8 +185,7 @@
       4,
       {
         "ignoreUrls": true,
-        "ignoreComments": false,
-        "ignorePattern": "^\\s*(const|let|var)\\s+\\w+\\s+\\=\\s+\\/.*\\/(|i|g|m|ig|im|gm|igm);?$"
+        "ignoreComments": false
       }
     ],
     "max-nested-callbacks": [2, 4],
