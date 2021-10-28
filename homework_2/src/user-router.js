@@ -1,6 +1,8 @@
 import express from 'express';
 import { uuid } from 'uuidv4';
+import { createValidator } from 'express-joi-validation';
 import { mockData } from './mock-data';
+import { schemas } from './schemas';
 
 const userRouter = express.Router();
 
@@ -67,9 +69,6 @@ const getSuggestUsers = (loginSubstring, limit) => {
 const getAutoSuggestUsers = (req, res) => {
   const { loginSubstring, limit } = req.query;
 
-  // check empty string & zero limit
-  if (!loginSubstring && !limit) res.status(404).send('Nothing to look for');
-
   const suggestUsers = getSuggestUsers(loginSubstring, limit);
 
   res.send(suggestUsers);
@@ -85,11 +84,19 @@ const deleteUser = (req, res) => {
   res.status(404).send('User not found.');
 };
 
+const { createUserPOST, updateUserInfoPUT, getAutoSuggestUsersGET } = schemas;
+
+const validator = createValidator();
+
 userRouter
   .get('/user/:id', getUserById)
-  .post('/user', createUser)
-  .put('/user', updateUserInfo)
-  .get('/auto-suggest-users', getAutoSuggestUsers)
+  .post('/user', validator.body(createUserPOST), createUser)
+  .put('/user', validator.body(updateUserInfoPUT), updateUserInfo)
+  .get(
+    '/auto-suggest-users',
+    validator.query(getAutoSuggestUsersGET),
+    getAutoSuggestUsers
+  )
   .delete('/user/:id', deleteUser);
 
 export { userRouter };
