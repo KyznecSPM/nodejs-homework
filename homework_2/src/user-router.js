@@ -1,7 +1,6 @@
 import express from 'express';
 import { uuid } from 'uuidv4';
 import { createValidator } from 'express-joi-validation';
-import { mockData } from './mock-data';
 import { schemas } from './schemas';
 
 const userRouter = express.Router();
@@ -14,7 +13,7 @@ const userRouter = express.Router();
  * isDeleted: boolean
  */
 
-const USERS = mockData;
+const USERS = {};
 
 const getUserById = (req, res) => {
   const { id } = req.params;
