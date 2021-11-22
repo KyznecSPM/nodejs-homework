@@ -1,13 +1,15 @@
-// import { UserService } from './services/localUser.service';
-import { UserService } from './services/herokuUser.service';
+import { UserService } from '../services/user.service';
 
 const User = new UserService({});
 
 export const getUserById = async (req, res) => {
   const { id } = req.params;
   const currentUser = await User.getUserById(id);
-  if (currentUser) res.send(currentUser);
-  res.status(404).send('User not found.');
+  if (currentUser) {
+    res.send(currentUser);
+  } else {
+    res.status(404).send('User not found.');
+  }
 };
 
 export const createUser = async (req, res) => {
@@ -19,8 +21,11 @@ export const createUser = async (req, res) => {
 export const updateUserInfo = async (req, res) => {
   const { id, login, password, age } = req.body;
   const updatedUser = await User.updateUserInfo({ id, login, password, age });
-  if (updatedUser) res.send(updatedUser);
-  res.status(404).send('User not found.');
+  if (updatedUser) {
+    res.send(updatedUser);
+  } else {
+    res.status(404).send('User not found.');
+  }
 };
 
 export const getAutoSuggestUsers = async (req, res) => {
@@ -37,6 +42,7 @@ export const deleteUser = async (req, res) => {
   if (currentUser) {
     await User.deleteUser(id);
     res.sendStatus(204);
+  } else {
+    res.sendStatus(404).send('User not found.');
   }
-  res.sendStatus(404).send('User not found.');
 };

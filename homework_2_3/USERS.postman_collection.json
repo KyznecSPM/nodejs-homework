@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"login\": \"admin_3\",\r\n    \"password\": \"qwert123y\",\r\n    \"age\": 23\r\n}",
+					"raw": "{\r\n    \"login\": \"admin_1233\",\r\n    \"password\": \"qwert123y\",\r\n    \"age\": 23\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -20,7 +20,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/api/v1/user",
+					"raw": "http://localhost:4000/api/v1/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -29,7 +29,7 @@
 					"path": [
 						"api",
 						"v1",
-						"user"
+						"users"
 					]
 				}
 			},
@@ -42,7 +42,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": \"id1\",\r\n    \"login\": \"admin_3\",\r\n    \"password\": \"qwert123y\",\r\n    \"age\": 23\r\n}",
+					"raw": "{\r\n    \"id\": \"bfba09cc-cc00-42e1-9988-ce736ee47188\",\r\n    \"login\": \"admin_3\",\r\n    \"password\": \"qwert123y\",\r\n    \"age\": 23\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -50,7 +50,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:4000/api/v1/user",
+					"raw": "http://localhost:4000/api/v1/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -59,7 +59,7 @@
 					"path": [
 						"api",
 						"v1",
-						"user"
+						"users"
 					]
 				}
 			},
@@ -71,7 +71,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/api/v1/auto-suggest-users?loginSubstring=ad&limit=10",
+					"raw": "http://localhost:4000/api/v1/users/auto-suggest-users?loginSubstring=ad&limit=10",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -80,6 +80,7 @@
 					"path": [
 						"api",
 						"v1",
+						"users",
 						"auto-suggest-users"
 					],
 					"query": [
@@ -102,7 +103,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/api/v1/user/id1",
+					"raw": "http://localhost:4000/api/v1/users/info/bfba09cc-cc00-42e1-9988-ce736ee47188",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -111,8 +112,9 @@
 					"path": [
 						"api",
 						"v1",
-						"user",
-						"id1"
+						"users",
+						"info",
+						"bfba09cc-cc00-42e1-9988-ce736ee47188"
 					]
 				}
 			},
@@ -121,10 +123,10 @@
 		{
 			"name": "DeleteUser",
 			"request": {
-				"method": "GET",
+				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:4000/api/v1/user/id1",
+					"raw": "http://localhost:4000/api/v1/users/bfba09cc-cc00-42e1-9988-ce736ee47188",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -133,8 +135,8 @@
 					"path": [
 						"api",
 						"v1",
-						"user",
-						"id1"
+						"users",
+						"bfba09cc-cc00-42e1-9988-ce736ee47188"
 					]
 				}
 			},

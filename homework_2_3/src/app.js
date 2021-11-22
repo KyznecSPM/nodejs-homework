@@ -1,8 +1,9 @@
 import { server } from './config/server';
 import { database } from './config/database';
-import { userRouter } from './api';
+import { userRouter, groupsRouter } from './api';
 
-server.use('/api/v1', userRouter);
+server.use('/api/v1/users', userRouter);
+server.use('/api/v1/groups', groupsRouter);
 
 database
   .authenticate()
