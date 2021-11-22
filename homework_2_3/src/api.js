@@ -6,19 +6,38 @@ import {
   updateUserInfo,
   getAutoSuggestUsers,
   deleteUser
-} from './controllers';
+} from './controllers/user';
+
+import {
+  getGroupById,
+  createGroup,
+  deleteGroup,
+  getAllGroups,
+  updateGroup,
+  addUsersToGroup
+} from './controllers/group';
 
 const userRouter = express.Router();
 
 userRouter
-  .get('/user/:id', getUserById)
-  .post('/user', validator.createUserPOST, createUser)
-  .put('/user', validator.updateUserInfoPUT, updateUserInfo)
+  .get('/info/:id', getUserById)
+  .post('/', validator.createUserPOST, createUser)
+  .put('/', validator.updateUserInfoPUT, updateUserInfo)
   .get(
     '/auto-suggest-users',
     validator.getAutoSuggestUsersGET,
     getAutoSuggestUsers
   )
-  .delete('/user/:id', deleteUser);
+  .delete('/:id', deleteUser);
 
-export { userRouter };
+const groupsRouter = express.Router();
+
+groupsRouter
+  .get('/all', getAllGroups)
+  .get('/info/:id', getGroupById)
+  .delete('/:id', deleteGroup)
+  .post('/', validator.createGroupPOST, createGroup)
+  .post('/add-users-to-group', validator.addUsersToGroupPOST, addUsersToGroup)
+  .put('/', validator.updateGroupPUT, updateGroup);
+
+export { userRouter, groupsRouter };

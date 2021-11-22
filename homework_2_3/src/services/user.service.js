@@ -1,4 +1,6 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
+import { Op } from 'sequelize';
+import { User } from '../models/user';
 
 /**
  * id: string
@@ -8,7 +10,64 @@ import { uuid } from 'uuidv4';
  * isDeleted: boolean
  */
 
-export class UserService {
+export class HerokuUserService {
+  async getUserById(id) {
+    const currentUser = await User.findOne({
+      where: {
+        id
+      }
+    });
+    return currentUser;
+  }
+
+  async deleteUser(id) {
+    await User.update(
+      { isDeleted: true },
+      {
+        where: { id }
+      }
+    );
+  }
+
+  async createUser({ login, password, age }) {
+    const id = uuidv4();
+    const newUser = await User.create({
+      id,
+      login,
+      password,
+      age,
+      isDeleted: false
+    });
+    return newUser;
+  }
+
+  async updateUserInfo({ id, login, password, age }) {
+    const user = await this.getUserById(id);
+
+    const updatedUser = await User.update(
+      { ...user, login, password, age },
+      {
+        where: { id }
+      }
+    ).then(() => User.findOne({ where: { id } }));
+
+    return updatedUser;
+  }
+
+  async getSuggestUsers(loginSubstring, limit) {
+    const sortedUsers = await User.findAll({
+      order: ['login'],
+      where: {
+        login: { [Op.iLike]: `${loginSubstring}%` }
+      },
+      limit
+    });
+
+    return sortedUsers;
+  }
+}
+
+export class LocalUserService {
   constructor(users) {
     this.users = users;
   }
@@ -26,7 +85,7 @@ export class UserService {
   }
 
   async createUser({ login, password, age }) {
-    const id = uuid();
+    const id = uuidv4();
     const newUser = {
       id,
       login,
@@ -70,3 +129,6 @@ export class UserService {
     return suggestUsers;
   }
 }
+
+export const UserService = HerokuUserService;
+// export const UserService = LocalUserService;
