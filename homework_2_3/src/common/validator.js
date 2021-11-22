@@ -44,5 +44,11 @@ export const validator = {
         .items(Joi.string().valid(...PERMISSION_VALUES))
         .required()
     })
+  ),
+  addUsersToGroupPOST: joiValidator.body(
+    Joi.object().keys({
+      groupId: Joi.string().required(),
+      userIds: Joi.array().items(Joi.string()).required()
+    })
   )
 };

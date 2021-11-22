@@ -13,7 +13,8 @@ import {
   createGroup,
   deleteGroup,
   getAllGroups,
-  updateGroup
+  updateGroup,
+  addUsersToGroup
 } from './controllers/group';
 
 const userRouter = express.Router();
@@ -36,6 +37,7 @@ groupsRouter
   .get('/info/:id', getGroupById)
   .delete('/:id', deleteGroup)
   .post('/', validator.createGroupPOST, createGroup)
+  .post('/add-users-to-group', validator.addUsersToGroupPOST, addUsersToGroup)
   .put('/', validator.updateGroupPUT, updateGroup);
 
 export { userRouter, groupsRouter };

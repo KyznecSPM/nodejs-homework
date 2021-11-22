@@ -43,3 +43,13 @@ export const deleteGroup = async (req, res) => {
     res.sendStatus(404).send('Group not found.');
   }
 };
+
+export const addUsersToGroup = async (req, res) => {
+  const { userIds, groupId } = req.body;
+  try {
+    await Group.addUsersToGroup(groupId, userIds);
+    res.status(200).send('Users added to group');
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};

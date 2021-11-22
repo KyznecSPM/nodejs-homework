@@ -1,7 +1,5 @@
 import { DATABASE_URL } from './constants';
-const Sequelize = require('sequelize');
-
-console.log(DATABASE_URL);
+import Sequelize from 'sequelize';
 
 export const database = new Sequelize(DATABASE_URL, {
   dialectOptions: {
