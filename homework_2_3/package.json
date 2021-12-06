@@ -5,6 +5,7 @@
   "main": "./src/app.js",
   "scripts": {
     "start": "nodemon --exec babel-node ./src/app.js",
+    "debug": "@powershell -Command $env:DEBUG='*';node ./dist/app.js",
     "build": "babel src/** -d dist",
     "clean": "rm -rf node_modules dist",
     "reinstall": "npm run clean && npm install",
@@ -20,11 +21,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-joi-validation": "^5.0.0",
+    "express-winston": "^4.2.0",
     "joi": "^17.4.2",
+    "method-override": "^3.0.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.9.0",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
