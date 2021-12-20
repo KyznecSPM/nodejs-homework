@@ -50,5 +50,11 @@ export const validator = {
       groupId: Joi.string().required(),
       userIds: Joi.array().items(Joi.string()).required()
     })
+  ),
+  getLoginJwt: joiValidator.body(
+    Joi.object().keys({
+      login: Joi.string().required(),
+      password: Joi.string().alphanum().required()
+    })
   )
 };
