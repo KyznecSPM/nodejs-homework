@@ -1,10 +1,12 @@
 import expressWinston from 'express-winston';
 import winston from 'winston';
+import cors from 'cors';
 import methodOverride from 'method-override';
 import { server } from './config/server';
 import { database } from './config/database';
-import { userRouter, groupsRouter } from './api';
+import { userRouter, groupsRouter, loginRouter } from './api';
 import { PORT } from './config/constants';
+import { authenticateMiddleware } from './middleware/authenticate';
 
 const logger = expressWinston.logger({
   transports: [
@@ -35,6 +37,9 @@ const errorLogger = expressWinston.errorLogger({
 server.use(methodOverride());
 server.use(logger);
 
+server.use(cors());
+server.use('/api/v1', authenticateMiddleware);
+server.use('/auth', loginRouter);
 server.use('/api/v1/users', userRouter);
 server.use('/api/v1/groups', groupsRouter);
 

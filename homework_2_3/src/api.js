@@ -17,6 +17,8 @@ import {
   addUsersToGroup
 } from './controllers/group';
 
+import { getLoginJwt } from './controllers/login';
+
 const userRouter = express.Router();
 
 userRouter
@@ -40,4 +42,8 @@ groupsRouter
   .post('/add-users-to-group', validator.addUsersToGroupPOST, addUsersToGroup)
   .put('/', validator.updateGroupPUT, updateGroup);
 
-export { userRouter, groupsRouter };
+const loginRouter = express.Router();
+
+loginRouter.post('/login', validator.getLoginJwt, getLoginJwt);
+
+export { userRouter, groupsRouter, loginRouter };
