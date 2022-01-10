@@ -1,6 +1,6 @@
 import { UserService } from '../services/user.service';
 
-const User = new UserService({});
+export const User = new UserService({});
 
 export const getUserById = async (req, res) => {
   try {
