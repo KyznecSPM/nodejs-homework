@@ -1,6 +1,6 @@
 import { GroupService } from '../services/group.service';
 
-const Group = new GroupService();
+export const Group = new GroupService();
 
 export const getAllGroups = async (req, res) => {
   try {
